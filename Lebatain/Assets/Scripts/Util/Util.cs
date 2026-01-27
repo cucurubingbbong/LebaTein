@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class Util : MonoBehaviour
+public static class Util 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static int GetRandomInt(int min, int max)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return Random.Range(min, max + 1);
     }
 }

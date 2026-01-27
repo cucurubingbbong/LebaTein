@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UnitBase : MonoBehaviour
+public abstract class UnitBase : MonoBehaviour
 {
     /// <summary>
     /// 최대체력
@@ -23,13 +23,26 @@ public class UnitBase : MonoBehaviour
     public string unitName = null;
 
     /// <summary>
-    /// 타겟팅 우선순위
+    /// 타겟팅 
     /// </summary>
     public int priority = 0;
 
-    public virtual void TakeDamage(int damage , ColorType damageType)
-    {
+    /// <summary>
+    /// 메쉬 렌더러
+    /// </summary>
+    [SerializeField] private MeshRenderer meshRenderer;
 
+
+    public virtual void TakeDamage(int damage, ColorType damageType)
+    {
+        currentHp -= damage;
+    }
+
+    public void SetColor(int colorIndex)
+    {
+        color = (ColorType)colorIndex;
+
+        meshRenderer.sharedMaterial = BuildManager.Instance.GetMaerterial(colorIndex);
     }
 
 

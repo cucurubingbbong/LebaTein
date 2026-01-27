@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &217527063757448527
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6345308660547961721}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6345308660547961721
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217527063757448527}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01468, y: -0.045, z: -0.08191}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2721633267969914850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &331334977497861810
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 2355338080956854289}
   - {fileID: 3873771589454513773}
-  - {fileID: 6345308660547961721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9057930805273613013
@@ -78,13 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2747e4cbffb6464c935d4f0178e85a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  m_color: 6
-  tileObj: {fileID: 6878268414500931692}
-  tileMarterialArr:
+  maxHp: 0
+  currentHp: 0
+  color: 6
+  unitName: 
+  priority: 0
+  meshRenderer: {fileID: 1154182289716814340}
+  tileMaterialArr:
   - {fileID: 2100000, guid: ee6f92df66dcf9c4880aa380c913c262, type: 2}
   - {fileID: 2100000, guid: 33b00be69b21a8c459d982ca2afd4439, type: 2}
   - {fileID: 2100000, guid: 384c062a91115fe4b84d20fda58b94ba, type: 2}
   - {fileID: 2100000, guid: a0c048a136a4aaa4388cf36224cdd799, type: 2}
+  - {fileID: 2100000, guid: 2412eabbc9cfc83459ce5e498974dea0, type: 2}
   - {fileID: 2100000, guid: aa4f01692e5816c42909e47e72060e7d, type: 2}
   - {fileID: 2100000, guid: 0c96417ef877a324098b5ea6fa336ad3, type: 2}
 --- !u!1 &1014040318682924424
