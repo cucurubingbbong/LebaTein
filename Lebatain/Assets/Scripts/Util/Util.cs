@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 
 public static class Util 
@@ -8,8 +9,9 @@ public static class Util
         return Random.Range(min, max + 1);
     }
 
-    public static Vector2Int GetVector2Int(Vector3 pos)
+    public static Vector2Int GetVector2RoundInt(Vector3 pos)
     {
-        return new Vector2Int((int)pos.x , (int)pos.z);
+        return new Vector2Int(Mathf.RoundToInt(pos.x) , Mathf.RoundToInt(pos.z));
     }
+
 }

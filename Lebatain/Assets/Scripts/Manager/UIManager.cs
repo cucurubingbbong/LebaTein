@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 
         UiSetting();
 
-        ShowScreen(UIScreenType.None);
+        ShowScreen(UIScreenType.Game_BuildSelect);
     }
 
 

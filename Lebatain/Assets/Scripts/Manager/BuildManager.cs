@@ -47,7 +47,7 @@ public class BuildManager : MonoBehaviour
     void Update()
     {
         if(!isSelecting && !isBuilding) return;
-        if (Input.GetMouseButtonDown(1)) Select();
+        if (Input.GetMouseButtonDown(0)) Select();
         if (Input.GetKeyDown(KeyCode.Q)) Cancel();
         
     }
@@ -61,14 +61,17 @@ public class BuildManager : MonoBehaviour
     {
         if(isBuilding) return;
         isBuilding = true;
+        isSelecting = true;
         selectedIndex = index;
     }
 
     private void Select()
     {
+        isSelecting = false;
         Vector3 pos = SelectPos();
-        Vector2Int gridPos = new Vector2Int((int)pos.x , (int)pos.z);
-        buildCommands[selectedIndex].Build(gridPos);
+        Debug.Log(pos);
+        Debug.Log(Util.GetVector2RoundInt(pos));
+        buildCommands[selectedIndex].Build(Util.GetVector2RoundInt(pos));
     }
 
     public void Cancel()
