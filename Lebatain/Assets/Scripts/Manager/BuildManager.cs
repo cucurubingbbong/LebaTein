@@ -44,6 +44,14 @@ public class BuildManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        foreach(BuildCommand bc in buildCommands)
+        {
+            bc.build = this;
+        }
+    }
+
     void Update()
     {
         if(!isSelecting && !isBuilding) return;
