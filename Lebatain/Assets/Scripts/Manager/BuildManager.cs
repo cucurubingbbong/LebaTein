@@ -69,8 +69,8 @@ public class BuildManager : MonoBehaviour
     {
         isSelecting = false;
         Vector3 pos = SelectPos();
-        Debug.Log(pos);
-        Debug.Log(Util.GetVector2RoundInt(pos));
+        //Debug.Log(pos);
+        //Debug.Log(Util.GetVector2RoundInt(pos));
         buildCommands[selectedIndex].Build(Util.GetVector2RoundInt(pos));
     }
 

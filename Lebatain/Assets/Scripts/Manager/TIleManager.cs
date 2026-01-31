@@ -28,7 +28,7 @@ public class TileManager : MonoBehaviour
         {
             for (int h = 0; h < height; h++)
             {
-                int colorIndex = Util.GetRandomInt(0, 6);
+                int colorIndex = Util.GetRandomInt(0, 5);
 
                 grid[w, h] = colorIndex;
 
