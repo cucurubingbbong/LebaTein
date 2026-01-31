@@ -42,7 +42,7 @@ public abstract class UnitBase : MonoBehaviour
     {
         color = (ColorType)colorIndex;
 
-        meshRenderer.sharedMaterial = BuildManager.Instance.GetMaerterial(colorIndex);
+        meshRenderer.sharedMaterial = BuildManager.Instance.GetMarterial(colorIndex);
     }
 
 

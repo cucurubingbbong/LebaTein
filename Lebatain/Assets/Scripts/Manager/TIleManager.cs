@@ -5,8 +5,15 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Transform gridObj;
     [SerializeField] private Tile tilePrefab;
 
-    private int[,] grid;
-    private Tile[,] tileArr;
+    /// <summary>
+    /// 타일의 위치 그리드
+    /// </summary>
+    public int[,] grid;
+    /// <summary>
+    /// 유닛베이스를 상속한것들의 그리드
+    /// </summary>
+    public UnitBase[,] unitGrid;
+    public Tile[,] tileArr;
 
     private void Start()
     {
