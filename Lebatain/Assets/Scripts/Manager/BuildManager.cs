@@ -77,6 +77,7 @@ public class BuildManager : MonoBehaviour
     {
         isSelecting = false;
         Vector3 pos = SelectPos();
+        if (pos == new Vector3(-1 , -1 , -1)) return;
         //Debug.Log(pos);
         //Debug.Log(Util.GetVector2RoundInt(pos));
         buildCommands[selectedIndex].Build(Util.GetVector2RoundInt(pos));
@@ -97,9 +98,10 @@ public class BuildManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 hitPoint = hit.point;
+            return hit.point;
         }
+        else return new Vector3(-1 , -1 , -1);
 
-        return hit.point;
 
     }
 
