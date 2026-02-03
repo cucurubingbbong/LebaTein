@@ -32,6 +32,16 @@ public abstract class UnitBase : MonoBehaviour
     /// </summary>
     [SerializeField] private MeshRenderer meshRenderer;
 
+    private IMaterialProvider materialProvider;
+
+    /// <summary>
+    /// 머테리얼 공급자 설정
+    /// </summary>
+    /// <param name="materialProvider">머테리얼 공급자</param>
+    public void SetMaterialProvider(IMaterialProvider materialProvider)
+    {
+        this.materialProvider = materialProvider;
+    }
 
     public virtual void TakeDamage(int damage, ColorType damageType)
     {
@@ -42,7 +52,7 @@ public abstract class UnitBase : MonoBehaviour
     {
         color = (ColorType)colorIndex;
 
-        meshRenderer.sharedMaterial = BuildManager.Instance.GetMarterial(colorIndex);
+        meshRenderer.sharedMaterial = materialProvider.GetMaterial(colorIndex);
     }
 
 
