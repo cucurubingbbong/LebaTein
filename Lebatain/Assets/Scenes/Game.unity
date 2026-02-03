@@ -1776,6 +1776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TIleManager
   gridObj: {fileID: 1109946661}
   tilePrefab: {fileID: 624104537898928061, guid: 3700198e6cd9e8747b303c348e9b010a, type: 3}
+  materialProviderSource: {fileID: 7535661}
 --- !u!1 &121000844
 GameObject:
   m_ObjectHideFlags: 0
@@ -14658,7 +14659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed190a44a0def844abf6071054eb325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileEraser
-  build: {fileID: 7535661}
   <ghost>k__BackingField: {fileID: 312896391140287364, guid: 70223164d46369c4da29a05aab29a94d, type: 3}
 --- !u!1 &1069699007
 GameObject:
@@ -23808,7 +23808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d6f163755b177418a8fa2a479004f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileBrush
-  build: {fileID: 7535661}
   <ghost>k__BackingField: {fileID: 312896391140287364, guid: 70223164d46369c4da29a05aab29a94d, type: 3}
 --- !u!1 &1731370484
 GameObject:
