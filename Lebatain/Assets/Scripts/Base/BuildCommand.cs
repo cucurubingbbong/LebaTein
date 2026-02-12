@@ -24,6 +24,8 @@ public abstract class BuildCommand : MonoBehaviour
     [field: SerializeField]
     public GameObject ghost {get; protected set;}
 
+    public UnitBase buildUnit;
+
     /// <summary>
     /// 빌드 커맨드가 설치하는 건물의 유형
     /// </summary>

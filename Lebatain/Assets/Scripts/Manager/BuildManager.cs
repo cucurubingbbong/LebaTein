@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public enum BuildState
 {
     /// <summary>
@@ -21,7 +20,7 @@ public enum BuildState
     Cancelled
 }
 
-public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvider
+public class BuildManager : MonoBehaviour, IBuildCommandContext
 {
     public static BuildManager Instance { get; private set; }
 
@@ -41,17 +40,21 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvid
     [SerializeField] BuildCommand[] buildCommands = null;
 
     /// <summary>
+    /// 빌드Uis
+    /// </summary>
+    [SerializeField] IBuildUI[] BuildUiArr = null;
+
+    /// <summary>
     /// 그리드 쿼리 제공자
     /// </summary>
-    [SerializeField] private MonoBehaviour tileManager = null;
+    [SerializeField] private TileManager tileManager = null;
 
     /// <summary>
     /// 고스트 미리보기 제공자
     /// </summary>
-    [SerializeField] private MonoBehaviour ghostManager = null;
+    [SerializeField] private GhostManager ghostManager = null;
 
     private IGridQuery gridQuery;
-    private ITileAccessor tileAccessor;
     private IBuildPreview ghostPreview;
 
     /// <summary>
@@ -92,22 +95,31 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvid
     private void Awake()
     {
         Instance = this;
-        gridQuery = tileManager as IGridQuery;
-        tileAccessor = tileManager as ITileAccessor;
-        ghostPreview = ghostManager as IBuildPreview;
+        gridQuery = tileManager;
+        ghostPreview = ghostManager;
     }
 
     void Start()
     {
+        if (buildCommands == null) return;
+
         foreach(BuildCommand bc in buildCommands)
         {
+            if (bc == null) continue;
             bc.SetContext(this);
             bc.Init();
+        }
+
+        foreach (IBuildUI bi in BuildUiArr)
+        {
+            if(bi == null) continue;
+            bi.Init(this);
         }
     }
 
     void Update()
     {
+        // 이벤트로 추후 교체
         if (currentState == BuildState.Preview) UpdateBuildFlow();
     }
 
@@ -161,11 +173,6 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvid
     }
 
     public Material GetMarterial(int index)
-    {
-        return GetMaterial(index);
-    }
-
-    public Material GetMaterial(int index)
     {
         return colorMaterialArr[index];
     }
@@ -238,8 +245,6 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvid
             return hit.point;
         }
         else return InvalidPos;
-
-
     }
 
     /// <summary>
@@ -262,6 +267,16 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext, IMaterialProvid
     /// <returns>타일</returns>
     public TileBase GetTile(Vector2Int pos)
     {
-        return tileAccessor.GetTile(pos);
+        return tileManager.GetTile(pos);
+    }
+
+    public UnitBase GetUnit(Vector2Int pos)
+    {
+        return tileManager.GetUnit(pos);
+    }
+
+    public void SetUnit(UnitBase unit , Vector2Int pos)
+    {
+        tileManager.unitGrid[pos.x , pos.y] = unit;
     }
 }

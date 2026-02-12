@@ -9,7 +9,7 @@ public class TileBase : UnitBase
     /// <param name="color">색깔</param>
     /// <param name="unitName">이름</param>
     /// <param name="priority">우선순위</param>
-    public void Init(int maxHp, ColorType color, string unitName, int priority, IMaterialProvider materialProvider)
+    public void Init(int maxHp, ColorType color, string unitName, int priority)
     {
         this.name = unitName;
         this.maxHp = maxHp;
@@ -17,7 +17,6 @@ public class TileBase : UnitBase
         this.unitName = unitName;
         this.priority = priority;
         gameObject.name = unitName;
-        SetMaterialProvider(materialProvider);
         SetColor((int)color);
     }
 }

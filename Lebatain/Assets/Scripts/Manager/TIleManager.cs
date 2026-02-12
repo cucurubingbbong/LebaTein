@@ -1,12 +1,9 @@
 using UnityEngine;
 
-public class TileManager : MonoBehaviour, IGridQuery, ITileAccessor
+public class TileManager : MonoBehaviour, IGridQuery
 {
     [SerializeField] private Transform gridObj;
     [SerializeField] private TileBase tilePrefab;
-    [SerializeField] private MonoBehaviour materialProviderSource;
-
-    private IMaterialProvider materialProvider;
 
     /// <summary>
     /// 타일의 위치 그리드
@@ -20,7 +17,6 @@ public class TileManager : MonoBehaviour, IGridQuery, ITileAccessor
 
     private void Start()
     {
-        materialProvider = materialProviderSource as IMaterialProvider;
         SetTile(10, 10);
     }
     public void SetTile(int width, int height)
@@ -43,7 +39,7 @@ public class TileManager : MonoBehaviour, IGridQuery, ITileAccessor
                 tile.transform.SetParent(gridObj, false);
                 tile.transform.localPosition = new Vector3(w, 0, h);
 
-                tile.Init(100, (ColorType)colorIndex, tileName, 5, materialProvider);
+                tile.Init(100, (ColorType)colorIndex, tileName, 5);
                 tileArr[w, h] = tile;
             }
         }
@@ -71,5 +67,15 @@ public class TileManager : MonoBehaviour, IGridQuery, ITileAccessor
     public TileBase GetTile(Vector2Int gridPos)
     {
         return tileArr[gridPos.x , gridPos.y];
+    }
+    /// <summary>
+    /// 유닛 베이스 접근
+    /// </summary>
+    /// <param name="gridPos">유닛베이스 좌표</param>
+    /// <returns></returns>
+
+    public UnitBase GetUnit(Vector2Int gridPos)
+    {
+        return unitGrid[gridPos.x , gridPos.y];
     }
 }

@@ -25,7 +25,7 @@ public class GhostManager : MonoBehaviour, IBuildPreview
         isGhost = true;
         currentCommand = command;
         currentGhostObj = Instantiate(currentCommand.ghost, new Vector3(-1 , -10 , -1) , Quaternion.identity);
-        ghostMesh = currentGhostObj.AddComponent<MeshRenderer>();
+        ghostMesh = currentGhostObj.gameObject.GetComponent<MeshRenderer>();
     }
 
     public void Ghost(bool isBuild , Vector2Int pos)
@@ -38,11 +38,8 @@ public class GhostManager : MonoBehaviour, IBuildPreview
     public void GhostCancel()
     {
         isGhost = false;
-        currentCommand = null;
         Destroy(currentGhostObj);
+        currentCommand = null;
         ghostMesh = null;
     }
-
-
-
 }
