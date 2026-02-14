@@ -36,13 +36,15 @@ public abstract class UnitBase : MonoBehaviour
     {
         currentHp -= damage;
     }
+    /// <summary>
+    /// 색깔 설정
+    /// </summary>
+    /// <param name="colorIndex">설정할 색 인덱스 ColorType 인덱스번호</param>
 
-    public void SetColor(int colorIndex)
+    public virtual void SetColor(int colorIndex)
     {
         color = (ColorType)colorIndex;
 
         meshRenderer.sharedMaterial = BuildManager.Instance.GetMarterial(colorIndex);
     }
-
-
 }

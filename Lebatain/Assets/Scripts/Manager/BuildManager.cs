@@ -131,14 +131,16 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
         Vector3 pos = SelectPos();
         if (pos == InvalidPos)
         {
-            UpdateGhost(false, new Vector2Int(-1, -1));
             HandleRotateInput();
+            UpdateGhost(false, new Vector2Int(-1, -1));
             HandleCancelInput();
             return;
         }
 
         Vector2Int gridPos = Util.GetVector2RoundInt(pos);
         bool canBuild = isBuild(pos);
+
+        HandleRotateInput();
 
         UpdateGhost(canBuild, gridPos);
         HandleBuildInput(canBuild, gridPos);
@@ -175,8 +177,8 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
 
     private void HandleRotateInput()
     {
-        if(Input.GetKeyDown(KeyCode.Q)) ghostPreview.GhostRotate(0);
-        else if(Input.GetKeyDown(KeyCode.E)) ghostPreview.GhostRotate(1);
+        if(Input.GetKeyDown(KeyCode.E)) ghostPreview.GhostRotate(0);
+        else if(Input.GetKeyDown(KeyCode.R)) ghostPreview.GhostRotate(1);
     }
 
     public Material GetMarterial(int index)

@@ -77,7 +77,7 @@ MonoBehaviour:
   unitName: 
   priority: 0
   meshRenderer: {fileID: 5887994769925622176}
-  towerData: {fileID: 0}
+  towerData: {fileID: 11400000, guid: 30778ff4e297b7846a704a1357a71549, type: 2}
 --- !u!33 &3362271517641990696
 MeshFilter:
   m_ObjectHideFlags: 0
