@@ -43,6 +43,7 @@ public class GhostManager : MonoBehaviour, IBuildPreview
         Destroy(currentGhostObj);
         currentCommand = null;
         ghostMesh = null;
+        rotIndex = 0;
     }
 
     public void GhostRotate(int direction)
