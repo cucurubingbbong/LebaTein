@@ -132,6 +132,7 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
         if (pos == InvalidPos)
         {
             UpdateGhost(false, new Vector2Int(-1, -1));
+            HandleRotateInput();
             HandleCancelInput();
             return;
         }
@@ -172,6 +173,12 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
         if (Input.GetKeyDown(KeyCode.Q)) Cancel();
     }
 
+    private void HandleRotateInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Q)) ghostPreview.GhostRotate(0);
+        else if(Input.GetKeyDown(KeyCode.E)) ghostPreview.GhostRotate(1);
+    }
+
     public Material GetMarterial(int index)
     {
         return colorMaterialArr[index];
@@ -193,7 +200,7 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
     {
         //Debug.Log(gridPos);
         ChangeState(BuildState.Placing);
-        buildCommands[selectedIndex].Build(gridPos);
+        buildCommands[selectedIndex].Build(gridPos , ghostPreview);
         PlaceComplete();
     }
 

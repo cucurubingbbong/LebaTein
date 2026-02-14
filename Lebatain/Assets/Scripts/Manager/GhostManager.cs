@@ -20,6 +20,8 @@ public class GhostManager : MonoBehaviour, IBuildPreview
 
     public bool isGhost {get; private set;}
 
+    private int rotIndex;
+
     public void GetGhost(BuildCommand command)
     {
         isGhost = true;
@@ -41,5 +43,23 @@ public class GhostManager : MonoBehaviour, IBuildPreview
         Destroy(currentGhostObj);
         currentCommand = null;
         ghostMesh = null;
+    }
+
+    public void GhostRotate(int direction)
+    {
+        int step = (direction == 0) ? -1 : 1;
+        rotIndex = (rotIndex + step) & 3; 
+        ApplyRotation();
+    }
+
+    private void ApplyRotation()
+    {
+        if (currentGhostObj == null) return;
+        currentGhostObj.transform.rotation = Quaternion.Euler(0f, rotIndex * 90f, 0f);
+    }
+
+    public GameObject GetGhostObj()
+    {
+        return currentGhostObj;
     }
 }

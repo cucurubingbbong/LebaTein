@@ -9,9 +9,9 @@ public class TowerBuild : BuildCommand
     [SerializeField] GameObject[] towerGhosts;
 
     [SerializeField] UnitBase[] buildUnits;
-    public override void Build(Vector2Int pos)
+    public override void Build(Vector2Int pos , IBuildPreview ibp)
     {
-        UnitBase unit = Instantiate(buildUnit , new Vector3(pos.x , 0 , pos.y),Quaternion.identity);
+        UnitBase unit = Instantiate(buildUnit , new Vector3(pos.x , 0 , pos.y),ibp.GetGhostObj().transform.rotation);
         TowerBase tower = unit.GetComponent<TowerBase>();
         tower.Init();
         tower.color = (ColorType)context.SelectedColorIndex;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 public class TileBrush : BuildCommand
 {
-    public override void Build(Vector2Int pos)
+    public override void Build(Vector2Int pos , IBuildPreview ibp)
     {
         TileBase tile = context.GetTile(pos);
         tile.color = (ColorType)context.SelectedColorIndex;

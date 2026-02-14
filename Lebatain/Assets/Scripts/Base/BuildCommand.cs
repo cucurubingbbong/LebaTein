@@ -31,7 +31,7 @@ public abstract class BuildCommand : MonoBehaviour
     /// </summary>
 
     public UnitType buildUnitType  {get; protected set;}
-    public abstract void Build(Vector2Int pos);
+    public abstract void Build(Vector2Int pos , IBuildPreview ibp);
 
     public abstract void Init();
 
