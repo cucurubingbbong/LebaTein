@@ -26,4 +26,16 @@ public class TowerBase : UnitBase
         attackPower = towerData.attackPower;
 
     }
+
+    public override void SetColor(int colorIndex)
+    {
+        color = (ColorType)colorIndex;
+        Material colorMat = BuildManager.Instance.GetMarterial(colorIndex);
+
+        MeshRenderer[] childRenderers = GetComponentsInChildren<MeshRenderer>(true);
+        for (int i = 0; i < childRenderers.Length; i++)
+        {
+            childRenderers[i].sharedMaterial = colorMat;
+        }
+    }
 }

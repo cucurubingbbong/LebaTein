@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultTower
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   m_maxHp: 100
-  m_color: 6
+  m_color: 3
   m_unitName: Test
   m_priority: 1
   m_attackPower: 10

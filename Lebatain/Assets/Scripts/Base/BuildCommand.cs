@@ -27,6 +27,11 @@ public abstract class BuildCommand : MonoBehaviour
     public UnitBase buildUnit;
 
     /// <summary>
+    /// 유닛 건설인지 아닌지
+    /// </summary>
+    public bool isUnitBuild;
+
+    /// <summary>
     /// 빌드 커맨드가 설치하는 건물의 유형
     /// </summary>
 

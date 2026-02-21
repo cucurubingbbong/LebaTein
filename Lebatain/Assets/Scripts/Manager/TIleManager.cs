@@ -23,7 +23,7 @@ public class TileManager : MonoBehaviour, IGridQuery
     {
         grid = new int[width, height];
         tileArr = new TileBase[width, height];
-        unitGrid = new UnitBase[width , height];
+        unitGrid = new UnitBase[width, height];
 
         for (int w = 0; w < width; w++)
         {
@@ -50,23 +50,30 @@ public class TileManager : MonoBehaviour, IGridQuery
     /// </summary>
     /// <param name="gridPos">그리드 좌표</param>
     /// <returns>가능하면 true , 안되면 false</returns>
-    public bool CanBuild(Vector2Int gridPos)
+    public bool CanBuild(Vector2Int gridPos, bool isUnitBuild)
     {
         if (unitGrid == null) return false;
-        int width = unitGrid.GetLength(0);
-        int height = unitGrid.GetLength(1);
-        if (gridPos.x < 0 || gridPos.x >= width || gridPos.y < 0 || gridPos.y >= height) return false;
-        return unitGrid[gridPos.x , gridPos.y] == null;
+
+        if (isUnitBuild)
+        {
+            int width = unitGrid.GetLength(0);
+            int height = unitGrid.GetLength(1);
+            if (gridPos.x < 0 || gridPos.x >= width || gridPos.y < 0 || gridPos.y >= height) return false;
+            return unitGrid[gridPos.x, gridPos.y] == null;
+        }
+        else return true;
+
     }
 
     /// <summary>
     /// 타일 접근
     /// </summary>
-    /// <param name="gridPos">그리드 좌표</param>
-    /// <returns>타일</returns>
+    /// <param name="gridPos">타일 좌표 x , y</param>
+    /// <param name="isUnitBUild">유닛건설인지</param>
+    /// <returns></returns>
     public TileBase GetTile(Vector2Int gridPos)
     {
-        return tileArr[gridPos.x , gridPos.y];
+        return tileArr[gridPos.x, gridPos.y];
     }
     /// <summary>
     /// 유닛 베이스 접근
@@ -76,6 +83,6 @@ public class TileManager : MonoBehaviour, IGridQuery
 
     public UnitBase GetUnit(Vector2Int gridPos)
     {
-        return unitGrid[gridPos.x , gridPos.y];
+        return unitGrid[gridPos.x, gridPos.y];
     }
 }

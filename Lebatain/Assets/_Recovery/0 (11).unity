@@ -7946,7 +7946,6 @@ GameObject:
   - component: {fileID: 496678292}
   - component: {fileID: 496678291}
   - component: {fileID: 496678294}
-  - component: {fileID: 496678295}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8072,23 +8071,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &496678295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496678290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0922b51c54c4047947311f16e5a6fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  zoomSpeed: 2
-  minSize: 2
-  maxSize: 15
-  anchorZ: 15
-  cam: {fileID: 496678292}
 --- !u!1 &520156273
 GameObject:
   m_ObjectHideFlags: 0
@@ -15355,7 +15337,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileEraser
   <ghost>k__BackingField: {fileID: 1829461044319556311, guid: 70223164d46369c4da29a05aab29a94d, type: 3}
   buildUnit: {fileID: 0}
-  isUnitBuild: 0
 --- !u!1 &1069699007
 GameObject:
   m_ObjectHideFlags: 0
@@ -24778,7 +24759,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileBrush
   <ghost>k__BackingField: {fileID: 1829461044319556311, guid: 70223164d46369c4da29a05aab29a94d, type: 3}
   buildUnit: {fileID: 0}
-  isUnitBuild: 0
 --- !u!1 &1731370484
 GameObject:
   m_ObjectHideFlags: 0
@@ -25231,7 +25211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerBuild
   <ghost>k__BackingField: {fileID: 0}
   buildUnit: {fileID: 0}
-  isUnitBuild: 1
   towerGhosts:
   - {fileID: 1829461044319556311, guid: 70223164d46369c4da29a05aab29a94d, type: 3}
   buildUnits:

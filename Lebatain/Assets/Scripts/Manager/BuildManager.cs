@@ -92,11 +92,15 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
     /// </summary>
     [SerializeField] int selectedIndex = 0;
 
+    int selectLayerMask;
+
+
     private void Awake()
     {
         Instance = this;
         gridQuery = tileManager;
         ghostPreview = ghostManager;
+        selectLayerMask = ~LayerMask.GetMask("Tower");
     }
 
     void Start()
@@ -248,7 +252,7 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit , 100 , selectLayerMask))
         {
             Vector3 hitPoint = hit.point;
             return hit.point;
@@ -266,7 +270,7 @@ public class BuildManager : MonoBehaviour, IBuildCommandContext
         if(pos == InvalidPos) return false;
         Vector2Int gridPos = Util.GetVector2RoundInt(pos);
         if (gridQuery == null) return false;
-        return gridQuery.CanBuild(gridPos);
+        return gridQuery.CanBuild(gridPos , buildCommands[selectedIndex].isUnitBuild);
     }
 
     /// <summary>
